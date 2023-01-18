@@ -18,8 +18,6 @@ const HeadPhonesList = () => {
         {
           earphones.map((earphone) => {
             const { image: { mobile, tablet, desktop }, id, name, description, slug } = earphone
-            let splitName = name.split(' ')
-            console.log(splitName);
             return (
               <div className="grid lg:grid-cols-2 space-y-[2rem] lg:gap-40" data-aos="fade-up">
                 <div className="w-full">

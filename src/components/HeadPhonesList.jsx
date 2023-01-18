@@ -18,10 +18,8 @@ const HeadPhonesList = () => {
         {
           headphones.map((headphone) => {
             const { image: { mobile, tablet, desktop }, id, name, description, slug } = headphone
-            let splitName = name.split(' ')
-            console.log(splitName);
             return (
-              <div className="grid lg:grid-cols-2 space-y-[2rem] lg:gap-40" data-aos="fade-up">
+              <div key={id} className="grid lg:grid-cols-2 space-y-[2rem] lg:gap-40" data-aos="fade-up">
                 <div className="w-full">
                   <img src={mobile} className="w-full  md:hidden rounded-lg" alt={name} />
                   <img src={desktop} className="w-full max-h-[30rem] hidden  md:block md:object-cover lg:hidden rounded-lg" alt={name} />

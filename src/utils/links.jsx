@@ -2,7 +2,7 @@ const links = [
   { id: 1, title: 'home', to:'/' },
   { id: 2, title: 'headphones', to:'/headphones' },
   { id: 3, title: 'speakers', to:'/speakers' },
-  { id: 4, title: 'earphones', to:'earphones' },
+  { id: 4, title: 'earphones', to:'/earphones' },
 ]
 
 export const subImageLinks = [
@@ -18,14 +18,14 @@ export const subImageLinks = [
     title:'speakers',
     path:'./assets/shared/desktop/image-category-thumbnail-speakers.png',
     desc:'speakers',
-    to:'speakers'
+    to:'/speakers'
   },
   {
     id:3,
     title:'earphones',
     path:'./assets/shared/desktop/image-category-thumbnail-earphones.png',
     desc:'earphones',
-    to:'earphones'
+    to:'/earphones'
   },
 ]
 
