@@ -16,7 +16,7 @@ const HeroSection = () => {
   }, [])
   return (
     <>
-    <main>
+    <main className='overflow-x-hidden'>
     <div  data-aos="fade-up" className='min-h-[100vh] bg-semiBlack bg-img px-3 back-img  lg:px-[10rem] mt-[-1.2rem] grid place-items-center lg:flex relative'>
       <div className='self-left'>
         <div className='max-w-md flex flex-col  items-center  lg:items-start space-y-5'>
