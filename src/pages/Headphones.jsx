@@ -1,8 +1,14 @@
-import React from 'react'
+import { useSelector } from "react-redux"
+import PageHeader from "../components/PageHeader"
+import HeadPhonesList from "../components/HeadPhonesList"
+
 
 const Headphones = () => {
   return (
-    <div>Headphones</div>
+    <div>
+     <PageHeader text="headphones" />
+     <HeadPhonesList />
+    </div>
   )
 }
 

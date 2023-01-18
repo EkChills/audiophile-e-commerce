@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import links from '../utils/links'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className='w-full px-7 py-6 lg:px-[10rem] bg-semiBlack'>
+    <div className='w-full px-7 py-6 lg:px-[10rem] bg-pureBlack'>
       <div className='w-full flex justify-between items-center'>
         <div className=' hidden md:flex lg:hidden items-center space-x-8'>
         <svg className='lg:hidden' width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +30,7 @@ const Navbar = () => {
         <ul className='hidden text-[13px] font-semibold lg:flex items-center space-x-6 capitalize text-pureWhite'>
           {links.map((link, index) => {
             const { id, title } = link
-            return <li key={id} className='cursor-pointer hover:text-orange transition-all duration-500'>{title}</li>
+            return <Link key={id} to={link.to} className='cursor-pointer hover:text-orange transition-all duration-500'>{title}</Link>
           })}
         </ul>
 

@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.6.1",
     "@reduxjs/toolkit": "^1.9.1",
+    "aos": "^2.3.4",
     "autoprefixer": "^10.4.13",
     "components": "^0.1.0",
     "daisyui": "^2.46.1",

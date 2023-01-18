@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='flex flex-col space-y-12 items-center md:items-start text-center md:text-left'>
-        <p className='text-[15px] text-darkGray '>
+        <p className='text-[15px] text-darkGray lg:max-w-[33rem] '>
           Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music lovers and sound specialists who are devoted to helping you get the most out of personal audio. Come and visit our demo facility - we’re open 7 days a week.
         </p>
         <div className='flex flex-col space-y-12 items-center md:flex-row w-full md:space-y-0 md:justify-between '>

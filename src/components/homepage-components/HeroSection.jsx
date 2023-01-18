@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import OrangeButton from '../buttons/OrangeButton'
 import HomepageSubHero from './HomepageSubHero'
@@ -6,13 +6,18 @@ import HomeSubImages from './HomeSubImages'
 import SpeakerImage from './SpeakerImage'
 import EarphoneImage from './EarphoneImage'
 import FooterDesc from '../footer description/FooterDesc'
-import Footer from '../Footer'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 const HeroSection = () => {
+
+  useEffect(() => {
+    Aos.init({duration:1000})
+  }, [])
   return (
     <>
     <main>
-    <div className='min-h-[100vh] bg-semiBlack bg-img px-3 back-img  lg:px-[10rem] mt-[-1.2rem] grid place-items-center lg:flex relative'>
+    <div  data-aos="fade-up" className='min-h-[100vh] bg-semiBlack bg-img px-3 back-img  lg:px-[10rem] mt-[-1.2rem] grid place-items-center lg:flex relative'>
       <div className='self-left'>
         <div className='max-w-md flex flex-col  items-center  lg:items-start space-y-5'>
         <h5 className='uppercase tracking-[.4rem] text-darkGray'>new product</h5>
@@ -26,23 +31,23 @@ const HeroSection = () => {
       </div>
     </div>
 
-    <section className='lg:px-[10rem] mt-[7rem]'>
+    <section  className='lg:px-[10rem] mt-[7rem]' data-aos="fade-down" >
       <HomeSubImages />
     </section>
 
-    <section className='px-7 lg:px-[10rem] mt-[7rem]'>
+    <section data-aos="zoom-in" className='px-7 lg:px-[10rem] mt-[7rem]'>
       <HomepageSubHero />
     </section>
 
-    <section className='px-7 lg:px-[10rem] mt-[2rem]'>
+    <section data-aos="flip-down" className='px-7 lg:px-[10rem] mt-[2rem]'>
       <SpeakerImage />
     </section>
 
-    <section className='px-7 lg:px-[10rem] mt-[2rem]'>
+    <section data-aos="flip-right" className='px-7 lg:px-[10rem] mt-[2rem]'>
       <EarphoneImage />
     </section>
 
-    <section className='px-7 lg:px-[10rem] mt-[7rem] mb-[7rem]'>
+    <section data-aos="fade-left" className='px-7 lg:px-[10rem] mt-[7rem] mb-[7rem]'>
       <FooterDesc />
     </section>
 
