@@ -8,8 +8,8 @@ import Headphones from './pages/Headphones'
 import Home from './pages/Home'
 import SingleEarphone from './pages/SingleEarphone'
 import SingleHeadPhone from './pages/SingleHeadPhone'
-import SingleSpeaker from './pages/SingleSpeaker'
 import Speakers from './pages/Speakers'
+import SingleSpeaker from './pages/SingleSpeaker'
 const App = () => {
   return (
 

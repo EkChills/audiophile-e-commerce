@@ -29,3 +29,11 @@
   background-size: cover;
   background-position: center;
 }
+
+.orangeHover {
+  @apply hover:text-orange transition-all duration-300 cursor-pointer select-none
+}
+
+.singleProduct {
+  @apply bg-pureWhite flex flex-col space-y-[7rem] px-[1.3rem] md:px-[2.3rem] py-[7rem] lg:px-[7.3rem]
+}

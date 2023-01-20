@@ -18,10 +18,8 @@ const SpeakersList = () => {
         {
           speakers.map((speaker) => {
             const { image: { mobile, tablet, desktop }, id, name, description, slug } = speaker
-            let splitName = name.split(' ')
-            console.log(splitName);
             return (
-              <div className="grid lg:grid-cols-2 space-y-[2rem] lg:gap-40" data-aos="fade-up">
+              <div key={id} className="grid lg:grid-cols-2 space-y-[2rem] lg:gap-40" data-aos="fade-up">
                 <div className="w-full">
                   <img src={mobile} className="w-full  md:hidden rounded-lg" alt={name} />
                   <img src={desktop} className="w-full max-h-[30rem] hidden  md:block md:object-cover lg:hidden rounded-lg" alt={name} />
@@ -32,7 +30,7 @@ const SpeakersList = () => {
                   {speaker.new && <h5 className="uppercase tracking-[.4rem] text-orange text-[14px]">new product</h5>}
                   <h3 className="text-[28px] font-bold md:text-[40px] text-center lg:text-left">{name}</h3>
                   <p className="text-[15px] text-darkGray text-center lg:text-left">{description}</p>
-                  <Link to={`/headphones/${slug}`}>
+                  <Link to={`/speakers/${slug}`}>
                     <OrangeButton text="see product" bgColor='orange' bgColorHover={'lightOrange'} />
                   </Link>
                 </div>
