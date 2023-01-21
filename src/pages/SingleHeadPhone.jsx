@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { increaseAmount, reduceAmount } from '../features/allProductsSlice'
+import { increaseAmount, reduceAmount, resetAmount } from '../features/allProductsSlice'
 import OrangeButton from '../components/buttons/OrangeButton';
 import FeaturesDescription from '../components/FeaturesDescription';
+import DescImageGrid from '../components/DescImageGrid';
 
 const SingleHeadPhone = () => {
   const { slug } = useParams();
   const { headphones, itemAmount } = useSelector((store) => store.allProducts)
   const singleHeadphone = headphones.find((headphone) => headphone.slug === slug)
   const dispatch = useDispatch()
-  const { image: { mobile, tablet, desktop }, name, description, price, features, includes } = singleHeadphone
+  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery:{first, second, third} } = singleHeadphone
+
+  useEffect(() => {
+    dispatch(resetAmount())
+  }, [])
   return (
     <div className="singleProduct">
       <div className="grid md:grid-cols-2 space-y-[2rem] md:gap-20 lg:gap-40">
@@ -39,6 +44,7 @@ const SingleHeadPhone = () => {
       </div>
 
       <FeaturesDescription features={features} includes={includes} />
+      <DescImageGrid first={first} second={second} third={third} name={name} />
     </div>
   )
 }

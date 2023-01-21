@@ -21,7 +21,6 @@ const allProductsSlice = createSlice({
       if (payload <= state.itemAmount) {
         return
       }
-      console.log(payload);
       let increasedAmount = state.itemAmount + 1
       state.itemAmount = increasedAmount
     },
@@ -31,9 +30,12 @@ const allProductsSlice = createSlice({
       }
       let newAmount = state.itemAmount - 1
       state.itemAmount = newAmount
+    },
+    resetAmount:(state) => {
+      state.itemAmount = 1
     }
   }
 })
 
-export const { increaseAmount, reduceAmount } = allProductsSlice.actions
+export const { increaseAmount, reduceAmount, resetAmount } = allProductsSlice.actions
 export default allProductsSlice.reducer
