@@ -2,6 +2,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { increaseAmount, reduceAmount } from '../features/allProductsSlice'
+import Alternatives from '../components/Alternatives';
+import DescImageGrid from '../components/DescImageGrid';
+import HomeSubImages from '../components/homepage-components/HomeSubImages';
+import FooterDesc from '../components/footer description/FooterDesc';
 import OrangeButton from '../components/buttons/OrangeButton';
 import FeaturesDescription from '../components/FeaturesDescription';
 
@@ -11,7 +15,7 @@ const SingleEarphone = () => {
   const { earphones, itemAmount } = useSelector((store) => store.allProducts)
   const singleEarphone = earphones.find((earphone) => earphone.slug === slug)
   const dispatch = useDispatch()
-  const { image: { mobile, tablet, desktop }, name, description, price, features, includes } = singleEarphone
+  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery:{first, second, third}, others } = singleEarphone
   let startAmount = 1
   return (
     <div className="singleProduct">
@@ -41,6 +45,10 @@ const SingleEarphone = () => {
       </div>
 
       <FeaturesDescription features={features} includes={includes} />
+      <DescImageGrid first={first} second={second} third={third} name={name} />
+      <Alternatives altList={others} />
+      <HomeSubImages />
+      <FooterDesc />
     </div>
   )
 }

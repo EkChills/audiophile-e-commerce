@@ -7,10 +7,10 @@ const Alternatives = ({ altList }) => {
       <h2 className='text-pureBlack uppercase text-[24px] md:text-[32px] font-bold'>you may also like</h2>
       <div className="flex flex-col space-y-[2rem] md:flex-row md:space-y-0 md:justify-between md:space-x-5">
         {
-          altList.map((item) => {
+          altList.map((item, index) => {
             const { slug, name, image:{mobile,desktop,tablet} } = item
             return (
-              <div className="flex flex-col space-y-[1.3rem] items-center md:w-[35%]">
+              <div key={index} className="flex flex-col space-y-[1.3rem] items-center md:w-[35%]">
                 <div className='flex justify-center items-center '>
                   <img src={mobile} className="show-mobile rounded-lg" alt={name} />
                   <img src={tablet} className="show-tablet rounded-lg" alt={name} />

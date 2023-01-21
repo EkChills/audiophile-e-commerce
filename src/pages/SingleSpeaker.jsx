@@ -2,6 +2,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { increaseAmount, reduceAmount } from '../features/allProductsSlice'
+import DescImageGrid from '../components/DescImageGrid';
+import Alternatives from '../components/Alternatives';
+import HomeSubImages from '../components/homepage-components/HomeSubImages';
+import FooterDesc from '../components/footer description/FooterDesc';
 import OrangeButton from '../components/buttons/OrangeButton';
 import FeaturesDescription from '../components/FeaturesDescription';
 
@@ -11,7 +15,7 @@ const SingleSpeaker = () => {
   const { speakers, itemAmount } = useSelector((store) => store.allProducts)
   const singleSpeaker = speakers.find((speaker) => speaker.slug === slug)
   const dispatch = useDispatch()
-  const { image: { mobile, tablet, desktop }, name, description, price, features, includes } = singleSpeaker
+  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery:{first, second, third}, others } = singleSpeaker
   return (
     <div className="singleProduct">
       <div className="grid md:grid-cols-2 space-y-[2rem] md:gap-20 lg:gap-40">
@@ -40,6 +44,10 @@ const SingleSpeaker = () => {
       </div>
 
       <FeaturesDescription features={features} includes={includes} />
+      <DescImageGrid first={first} second={second} third={third} name={name} />
+      <Alternatives altList={others} />
+      <HomeSubImages />
+      <FooterDesc />
     </div>
   )
 }

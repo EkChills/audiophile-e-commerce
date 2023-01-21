@@ -396,7 +396,7 @@
         "desktop": "../assets/product-zx7-speaker/desktop/image-gallery-2.jpg"
       },
       "third": {
-        "mobile": "../assets/product-zx7-.speaker/mobile/image-gallery-3.jpg",
+        "mobile": "../assets/product-zx7-speaker/mobile/image-gallery-3.jpg",
         "tablet": "../assets/product-zx7-speaker/tablet/image-gallery-3.jpg",
         "desktop": "../assets/product-zx7-speaker/desktop/image-gallery-3.jpg"
       }
