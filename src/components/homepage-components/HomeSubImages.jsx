@@ -5,7 +5,7 @@ import rightArrow from '../../assets/shared/desktop/icon-arrow-right.svg'
 
 const HomeSubImages = () => {
   return (
-    <div className="flex flex-col space-y-12 md:space-y-0 md:flex-row px-7 md:justify-between md:space-x-3">
+    <div className="flex flex-col space-y-12 md:space-y-0 md:flex-row  md:justify-between md:space-x-3">
       {subImageLinks.map((item) => {
         return (
           <Link key={item.id} to={item.to} className="w-full">

@@ -5,13 +5,16 @@ import { increaseAmount, reduceAmount, resetAmount } from '../features/allProduc
 import OrangeButton from '../components/buttons/OrangeButton';
 import FeaturesDescription from '../components/FeaturesDescription';
 import DescImageGrid from '../components/DescImageGrid';
+import Alternatives from '../components/Alternatives';
+import HomeSubImages from '../components/homepage-components/HomeSubImages';
+import FooterDesc from '../components/footer description/FooterDesc';
 
 const SingleHeadPhone = () => {
   const { slug } = useParams();
   const { headphones, itemAmount } = useSelector((store) => store.allProducts)
   const singleHeadphone = headphones.find((headphone) => headphone.slug === slug)
   const dispatch = useDispatch()
-  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery:{first, second, third} } = singleHeadphone
+  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery:{first, second, third}, others } = singleHeadphone
 
   useEffect(() => {
     dispatch(resetAmount())
@@ -45,6 +48,9 @@ const SingleHeadPhone = () => {
 
       <FeaturesDescription features={features} includes={includes} />
       <DescImageGrid first={first} second={second} third={third} name={name} />
+      <Alternatives altList={others} />
+      <HomeSubImages />
+      <FooterDesc />
     </div>
   )
 }
