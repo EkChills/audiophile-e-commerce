@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className='w-full px-7 py-6 lg:px-[10rem] bg-pureBlack'>
+    <div className='w-full z-50 fixed px-7 pt-6 lg:px-[10rem] bg-pureBlack'>
       <div className='w-full flex justify-between items-center'>
         <div className=' hidden md:flex lg:hidden items-center space-x-8'>
         <svg className='lg:hidden' width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">

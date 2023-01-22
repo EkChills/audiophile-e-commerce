@@ -5,7 +5,6 @@ const DescImageGrid = ({ first, second, third, name }) => {
   useEffect(() => {
     Aos.init({duration:2000})
   },[])
-  console.log(first, second, third);
   return (
     <div className='flex   flex-col justify-center md:items-between   md:flex-row gap-5'>
       <div className='flex flex-col gap-5 md:w-[40%]   justify-between '>

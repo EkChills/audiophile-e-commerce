@@ -1,6 +1,9 @@
  const data = [
   {
     "id": 1,
+  cartImage:{
+    cartImg:'../assets/cart/image-yx1-earphones.jpg'
+  },
     "slug": "yx1-earphones",
     "name": "YX1 Wireless Earphones",
     "image": {
@@ -89,6 +92,9 @@
   },
   {
     "id": 2,
+    cartImage:{
+      cartImg:'../assets/cart/image-xx59-headphones.jpg'
+    },
     "slug": "xx59-headphones",
     "name": "XX59 Headphones",
     "image": {
@@ -173,6 +179,9 @@
   },
   {
     "id": 3,
+    cartImage:{
+      cartImg:'../assets/cart/image-xx99-mark-one-headphones.jpg'
+    },   
     "slug": "xx99-mark-one-headphones",
     "name": "XX99 Mark I Headphones",
     "image": {
@@ -257,6 +266,9 @@
   },
   {
     "id": 4,
+    cartImage:{
+      cartImg:'../assets/cart/image-xx99-mark-two-headphones.jpg'
+    },  
     "slug": "xx99-mark-two-headphones",
     "name": "XX99 Mark II Headphones",
     "image": {
@@ -345,6 +357,9 @@
   },
   {
     "id": 5,
+    cartImage:{
+      cartImg:'../assets/cart/image-zx7-speaker.jpg'
+    }, 
     "slug": "zx7-speaker",
     "name": "ZX7 Speaker",
     "image": {
@@ -433,6 +448,9 @@
   },
   {
     "id": 6,
+    cartImage:{
+      cartImg:'../assets/cart/image-zx9-speaker.jpg'
+    }, 
     "slug": "zx9-speaker",
     "name": "ZX9 Speaker",
     "image": {

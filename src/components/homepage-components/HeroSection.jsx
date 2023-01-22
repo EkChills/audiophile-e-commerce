@@ -31,7 +31,7 @@ const HeroSection = () => {
       </div>
     </div>
 
-    <section  className='lg:px-[10rem] mt-[7rem]' data-aos="fade-down" >
+    <section  className='px-7 lg:px-[10rem] mt-[7rem]' data-aos="fade-down" >
       <HomeSubImages />
     </section>
 
