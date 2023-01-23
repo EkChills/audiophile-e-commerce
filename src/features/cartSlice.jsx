@@ -27,8 +27,11 @@ const cartSlice = createSlice({
     openCartModal:(state) => {
       state.cartModalOpen = true
     },
-    closeCartModal:(state) => {
-      state.cartModalOpen = false
+    closeCartModal:(state, {payload}) => {
+      if(payload === 'cart-backdrop') {
+        state.cartModalOpen = false
+      }
+      return
     },
     increaseCartItemAmount:(state,{payload}) => {
       const {name,amount} = payload

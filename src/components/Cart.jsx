@@ -20,14 +20,16 @@ const Cart = () => {
     return totals + totalAmount
   }, 0)
 
+
+
   if(cartItems.length <= 0) {
-    return <div className="flex flex-col z-[55] space-y-[1.7rem] w-[90vw] md:w-[30rem]  bg-pureWhite p-7 rounded-lg max-h-[90vh] overflow-y-hidden">
+    return <div className="flex flex-col z-[55] space-y-[1.7rem] w-[90vw] md:w-[30rem]  bg-pureWhite p-7 rounded-lg max-h-[90vh] overflow-y-hidden" id="cart-overlay">
       <EmptyCart />
     </div>
   }
 
   return (
-    <div className="flex flex-col z-[55] space-y-[1.7rem] w-[90vw] md:w-[30rem]  bg-pureWhite p-7 rounded-lg max-h-[90vh] overflow-y-hidden">
+    <div className="flex flex-col z-[55] space-y-[1.7rem] w-[90vw] md:w-[30rem]  bg-pureWhite p-7 rounded-lg max-h-[90vh] overflow-y-hidden" id="cart-overlay">
 
       <div className="flex justify-between items-center" >
         <span className="text-[18px] font-bold uppercase">cart ({cartItems.length})</span>
