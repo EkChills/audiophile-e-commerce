@@ -29,7 +29,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="flex flex-col z-[55] space-y-[1.7rem] w-[90vw] md:w-[30rem]  bg-pureWhite p-7 rounded-lg max-h-[90vh] overflow-y-hidden" id="cart-overlay">
+    <div className="flex flex-col z-[55] space-y-[1.7rem] w-[90vw] md:w-[30rem]  bg-pureWhite p-7 rounded-lg max-h-[30rem] overflow-y-scroll" id="cart-overlay">
 
       <div className="flex justify-between items-center" >
         <span className="text-[18px] font-bold uppercase">cart ({cartItems.length})</span>
@@ -37,7 +37,7 @@ const Cart = () => {
       </div>
       {cartItems.map((item, index) => {
         const { cartImg, name, price, amount } = item
-        return <div key={index} className="flex justify-between items-center">
+        return <div key={index} className="flex justify-between items-center ">
           <div className="flex items-center space-x-3">
             <img src={cartImg} alt="" className="rounded-lg w-20" />
             <div className="flex flex-col space-y-3">

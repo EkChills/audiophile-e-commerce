@@ -1,22 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { increaseAmount, reduceAmount } from '../features/allProductsSlice'
-import Alternatives from '../components/Alternatives';
-import DescImageGrid from '../components/DescImageGrid';
-import HomeSubImages from '../components/homepage-components/HomeSubImages';
-import FooterDesc from '../components/footer description/FooterDesc';
+import { increaseAmount, reduceAmount, resetAmount } from '../features/allProductsSlice'
 import OrangeButton from '../components/buttons/OrangeButton';
 import FeaturesDescription from '../components/FeaturesDescription';
+import DescImageGrid from '../components/DescImageGrid';
+import Alternatives from '../components/Alternatives';
+import HomeSubImages from '../components/homepage-components/HomeSubImages';
+import FooterDesc from '../components/footer description/FooterDesc';
+import AddToCartModal from '../components/AddToCartModal';
+import {addItemToLocalStorage} from '../utils/localStorage'
+import { addToCart, openCartModal } from '../features/cartSlice';
+import CounterButton from '../components/CounterButton';
 
 const SingleEarphone = () => {
-
   const { slug } = useParams();
   const { earphones, itemAmount } = useSelector((store) => store.allProducts)
+  const {cartItems,cartModalOpen} = useSelector((store) => store.cart)
   const singleEarphone = earphones.find((earphone) => earphone.slug === slug)
   const dispatch = useDispatch()
-  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery:{first, second, third}, others } = singleEarphone
-  let startAmount = 1
+  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery:{first, second, third}, others, cartImage:{cartImg} } = singleEarphone
+
+  const cart = {
+    name,
+    price,
+    amount:itemAmount,
+    cartImg,
+  }
+
+  useEffect(() => {
+    dispatch(resetAmount())
+  }, [])
   return (
     <div className="singleProduct">
       <div className="grid md:grid-cols-2 space-y-[2rem] md:gap-20 lg:gap-40">
@@ -33,13 +48,11 @@ const SingleEarphone = () => {
           <p className='text-[18px] font-bold'>$ {price}</p>
 
           <div className="flex items-center justify-between space-x-4">
-            <div className='flex p-3 items-center space-x-9 bg-lightGray'>
-              <span className='text-darkGray font-bold text-[13px] orangeHover' onClick={() => dispatch(reduceAmount())} >-</span>
-              <span className='text-pureBlack text-[13px] font-bold'>{itemAmount}</span>
-              <span className='text-darkGray font-bold text-[13px] orangeHover' onClick={() => dispatch(increaseAmount(20))}>+</span>
-
-            </div>
-            <OrangeButton text={'add to cart'} />
+            <CounterButton increase={increaseAmount} decrease={reduceAmount} />
+            <OrangeButton text={'add to cart'} onClick={() => {
+              dispatch(openCartModal())
+              dispatch(addToCart(cart))
+            }} />
           </div>
         </div>
       </div>
@@ -49,6 +62,7 @@ const SingleEarphone = () => {
       <Alternatives altList={others} />
       <HomeSubImages />
       <FooterDesc />
+      {cartModalOpen && createPortal(<AddToCartModal />, document.getElementById('root'))}
     </div>
   )
 }

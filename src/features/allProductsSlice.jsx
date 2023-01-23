@@ -38,8 +38,13 @@ const allProductsSlice = createSlice({
     openNavModal: (state) => {
       state.isNavOpen = true
     },
-    closeNavModal: (state) => {
-      state.isNavOpen = false
+    closeNavModal: (state, {payload}) => {
+      if(payload === 'nav-backdrop') {
+        state.isNavOpen = false
+        return
+      }
+
+      return
     }
   }
 })
