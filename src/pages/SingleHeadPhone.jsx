@@ -48,7 +48,7 @@ const SingleHeadPhone = () => {
           <p className='text-[18px] font-bold'>$ {price}</p>
 
           <div className="flex items-center justify-between space-x-4">
-            <CounterButton />
+            <CounterButton increase={increaseAmount} decrease={reduceAmount} />
             <OrangeButton text={'add to cart'} onClick={() => {
               dispatch(openCartModal())
               dispatch(addToCart(cart))

@@ -15,6 +15,10 @@ const cartSlice = createSlice({
       const {name,amount} = payload
       const foundItem = state.cartItems.find((item) => item.name === payload.name)
       if(foundItem) {
+
+        if(foundItem.amount >= 20) {
+          return
+        }
         foundItem.amount += amount
         return
       }
@@ -25,9 +29,29 @@ const cartSlice = createSlice({
     },
     closeCartModal:(state) => {
       state.cartModalOpen = false
+    },
+    increaseCartItemAmount:(state,{payload}) => {
+      const {name,amount} = payload
+      const foundItem = state.cartItems.find((item) => item.name === payload.name)
+      if(foundItem.amount >= 20) {
+        return
+      }
+      foundItem.amount += 1
+    },
+    reduceCartItemAmount:(state,{payload}) => {
+      const {name,amount} = payload
+      const foundItem = state.cartItems.find((item) => item.name === payload.name)
+      if(foundItem.amount <= 0) {
+        state.cartItems = state.cartItems.filter((item) => item.name !== foundItem.name)
+        return
+      }
+      foundItem.amount -= 1
+    },
+    clearCart:(state) => {
+      state.cartItems = []
     }
   }
 })
 
-export const {addToCart, openCartModal, closeCartModal} = cartSlice.actions
+export const {addToCart, openCartModal, closeCartModal, increaseCartItemAmount, reduceCartItemAmount, clearCart} = cartSlice.actions
 export default cartSlice.reducer
