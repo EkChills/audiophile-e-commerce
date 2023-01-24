@@ -50,7 +50,8 @@ const Navbar = () => {
       </div>
       <hr className='mt-7 border-veryDarkGray' />
       {cartModalOpen && createPortal(<AddToCartModal />, document.getElementById('root'))}
-      {isNavOpen && createPortal(<NavModal />, document.getElementById('root'))}
+      {/* {isNavOpen && createPortal(<NavModal />, document.getElementById('root'))} */}
+      <NavModal />
     </div>
   )
 }

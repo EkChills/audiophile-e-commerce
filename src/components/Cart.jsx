@@ -58,7 +58,7 @@ const Cart = () => {
         <span className="text-darkGray uppercase text-[15px]">Total</span>
         <span className="text-[18px] font-bold uppercase">$ {cartTotals}</span>
       </div>
-      <button className={`text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange hover:bg-lightOrange w-[100%] transition-colors duration-300`}>checkout</button>
+      <button className={`text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange font-bold hover:bg-lightOrange w-[100%] transition-colors duration-300`}>checkout</button>
       
     </div>
   )
