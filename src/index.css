@@ -49,3 +49,7 @@
 .show-desktop {
   @apply w-full hidden lg:block
 }
+
+.general-page-padding {
+  @apply px-[1.3rem] md:px-[2.3rem] py-[7rem] lg:px-[7.3rem]
+}

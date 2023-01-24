@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 import { increaseAmount, reduceAmount, resetAmount } from '../features/allProductsSlice'
 import OrangeButton from '../components/buttons/OrangeButton';
@@ -10,22 +11,22 @@ import Alternatives from '../components/Alternatives';
 import HomeSubImages from '../components/homepage-components/HomeSubImages';
 import FooterDesc from '../components/footer description/FooterDesc';
 import AddToCartModal from '../components/AddToCartModal';
-import {addItemToLocalStorage} from '../utils/localStorage'
+import { addItemToLocalStorage } from '../utils/localStorage'
 import { addToCart, openCartModal } from '../features/cartSlice';
 import CounterButton from '../components/CounterButton';
 
 const SingleSpeaker = () => {
   const { slug } = useParams();
   const { speakers, itemAmount } = useSelector((store) => store.allProducts)
-  const {cartItems,cartModalOpen} = useSelector((store) => store.cart)
+  const { cartItems, cartModalOpen } = useSelector((store) => store.cart)
   const singleSpeaker = speakers.find((speaker) => speaker.slug === slug)
   const dispatch = useDispatch()
-  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery:{first, second, third}, others, cartImage:{cartImg} } = singleSpeaker
+  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery: { first, second, third }, others, cartImage: { cartImg } } = singleSpeaker
 
   const cart = {
     name,
     price,
-    amount:itemAmount,
+    amount: itemAmount,
     cartImg,
   }
 
@@ -35,7 +36,10 @@ const SingleSpeaker = () => {
   return (
     <div className="singleProduct">
       <div className="grid md:grid-cols-2 space-y-[2rem] md:gap-20 lg:gap-40">
-        <div className="w-full">
+        <div className="w-full flex flex-col">
+          <Link to={'/speakers'} className='capitalize text-[15px] mb-6 font-semibold text-grayishBlack'>
+            go back
+          </Link>
           <img src={mobile} className="w-full  md:hidden rounded-lg" alt={name} />
           <img src={tablet} className="w-full max-h-[30rem] hidden  md:block md:object-cover lg:hidden rounded-lg" alt={name} />
           <img src={desktop} className="w-full hidden max-w-[30rem] lg:block rounded-lg" alt={name} />

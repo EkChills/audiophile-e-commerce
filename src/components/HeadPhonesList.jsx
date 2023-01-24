@@ -40,11 +40,11 @@ const HeadPhonesList = () => {
           })
         }
       </div>
-      <section data-aos="zoom-in" className=' px-[1.3rem] md:px-[2.3rem] py-[7rem] lg:px-[7.3rem]'>
+      <section data-aos="zoom-in" className='general-page-padding'>
         <HomeSubImages />
       </section>
 
-      <section data-aos="fade-up" className=' px-[1.3rem] md:px-[2.3rem] py-[7rem] lg:px-[7.3rem]'>
+      <section data-aos="fade-up" className='general-page-padding'>
         <FooterDesc />
       </section>
     </>

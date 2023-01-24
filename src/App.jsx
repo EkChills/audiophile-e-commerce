@@ -10,6 +10,8 @@ import SingleEarphone from './pages/SingleEarphone'
 import SingleHeadPhone from './pages/SingleHeadPhone'
 import Speakers from './pages/Speakers'
 import SingleSpeaker from './pages/SingleSpeaker'
+import Checkout from './pages/Checkout'
+import ProtectedRoute from './pages/ProtectedRoute'
 const App = () => {
   return (
 
@@ -24,6 +26,9 @@ const App = () => {
         <Route path='/headphones/:slug' element={<SingleHeadPhone />} />
         <Route path='/speakers' element={<Speakers />} />
         <Route path='/speakers/:slug' element={<SingleSpeaker />} />
+        <Route path='/checkout' element={<ProtectedRoute>
+          <Checkout />
+        </ProtectedRoute>} />
       </Routes>
       <Footer />
     </BrowserRouter>
