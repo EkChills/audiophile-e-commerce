@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import DarkButton from '../buttons/DarkButton'
 
@@ -9,7 +10,7 @@ const SpeakerImage = () => {
         <h2 className='text-[28px] text-pureBlack font-bold'>
         ZX7 SPEAKER
         </h2>
-        <DarkButton bgColor="transparent" bc="#000000" bs="1px" hover={'#000000'} solid="solid" text="see product" textCol='#000000' textColHover={'#ffffff'} />
+        <Link to="/speakers/zx7-speaker"><DarkButton bgColor="transparent" bc="#000000" bs="1px" hover={'#000000'} solid="solid" text="see product" textCol='#000000' textColHover={'#ffffff'} /></Link>
       </div>
     </Wrapper>
   )

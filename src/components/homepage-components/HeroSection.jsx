@@ -8,6 +8,7 @@ import EarphoneImage from './EarphoneImage'
 import FooterDesc from '../footer description/FooterDesc'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import { Link } from 'react-router-dom'
 
 const HeroSection = () => {
 
@@ -26,7 +27,7 @@ const HeroSection = () => {
           Headphones
         </h1>
         <Wrapper className='max-w-[21rem] text-center lg:text-left'>Experience natural, lifelike audio and exceptional <br /> build quality made for the passionate music <br /> enthusiast.</Wrapper>
-        <OrangeButton text="see product" bgColor='orange' bgColorHover={'lightOrange'} />
+        <Link to="/headphones/xx99-mark-two-headphones"><OrangeButton text="see product" bgColor='orange' bgColorHover={'lightOrange'} /></Link>
         </div>
       </div>
     </div>

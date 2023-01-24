@@ -20,7 +20,7 @@ const SingleHeadPhone = () => {
   const { cartItems, cartModalOpen } = useSelector((store) => store.cart)
   const singleHeadphone = headphones.find((headphone) => headphone.slug === slug)
   const dispatch = useDispatch()
-  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery: { first, second, third }, others, cartImage: { cartImg } } = singleHeadphone
+  const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery: { first, second, third }, others, category, cartImage: { cartImg } } = singleHeadphone
 
   const cart = {
     name,
@@ -62,7 +62,7 @@ const SingleHeadPhone = () => {
 
       <FeaturesDescription features={features} includes={includes} />
       <DescImageGrid first={first} second={second} third={third} name={name} />
-      <Alternatives altList={others} />
+      <Alternatives altList={others}  />
       <HomeSubImages />
       <FooterDesc />
       {cartModalOpen && createPortal(<AddToCartModal />, document.getElementById('root'))}

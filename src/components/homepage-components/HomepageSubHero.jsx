@@ -24,7 +24,7 @@ const HomepageSubHero = () => {
             <p className="hero-p"> sound.</p>
           </div>
 
-          <DarkButton text="see product" bgColor="#000000" hover='#4C4C4C' textCol={'#ffffff'} textColHover={'#ffffff'} />
+          <Link to="/speakers/zx9-speaker"><DarkButton text="see product" bgColor="#000000" hover='#4C4C4C' textCol={'#ffffff'} textColHover={'#ffffff'} /></Link>
         </div>
       </div>
     </Wrapper>
