@@ -13,7 +13,8 @@ module.exports = {
       darkGray:'hsl(0, 0%, 60%)',
       veryDarkGray:'hsl(0, 0%, 25%)',
       grayishBlack:'#4C4C4C',
-      semiDarkText:'hsla(0, 0%, 0%, 1)'
+      semiDarkText:'hsla(0, 0%, 0%, 1)',
+      borderColor:'hsla(0, 0%, 81%, 1)'
     },
     extend: {},
   },

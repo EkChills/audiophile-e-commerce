@@ -5,7 +5,6 @@ import React from 'react'
 
 const ProtectedRoute = ({ children }) => {
   const { cartItems } = useSelector((store) => store.cart)
-  console.log(cartItems);
   if (cartItems.length === 0) {
     return <Navigate to="/" />
   }

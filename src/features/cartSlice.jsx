@@ -2,9 +2,23 @@ import React from 'react'
 import { createSlice } from '@reduxjs/toolkit'
 import { getItemFromLocalStorage } from '../utils/localStorage'
 
+const inputValues = {
+  name:'',
+  emailAddress:'',
+  phoneNumber: '',
+  yourAddress:'',
+  zipCode:'',
+  city:'',
+  country:'',
+  paymentMethod:'e-money',
+  eMoneyNo:'',
+  eMoneyPin:''
+}
+
 const initialState = {
   cartItems: getItemFromLocalStorage(),
   cartModalOpen:false,
+  inputValues,
 }
 
 const cartSlice = createSlice({
@@ -52,9 +66,13 @@ const cartSlice = createSlice({
     },
     clearCart:(state) => {
       state.cartItems = []
+    },
+    handleChange:(state, {payload}) => {
+      const {name, value} = payload
+      state.inputValues[name] = value
     }
   }
 })
 
-export const {addToCart, openCartModal, closeCartModal, increaseCartItemAmount, reduceCartItemAmount, clearCart} = cartSlice.actions
+export const {addToCart, openCartModal, closeCartModal, increaseCartItemAmount, reduceCartItemAmount, clearCart, handleChange} = cartSlice.actions
 export default cartSlice.reducer
