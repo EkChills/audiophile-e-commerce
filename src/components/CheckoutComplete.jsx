@@ -17,7 +17,7 @@ const CheckoutComplete = () => {
     addTotalToLocalStorage(cartTotal)
   },[])
   return (
-    <div className='p-6 bg-pureWhite rounded-lg flex flex-col space-y-4'>
+    <div className='p-6 bg-pureWhite rounded-lg flex flex-col space-y-5 md:space-y-7'>
       <img src={confirmImg} className="w-14" alt="confirmation image" />
       <h2 className='text-pureBlack font-bold uppercase text-[24px]'>THANK YOU <br /> FOR YOUR ORDER</h2>
       <p className='text-[15px] text-darkGray max-w-[17rem] md:max-w-[20rem]'>You will receive an email confirmation shortly.</p>
