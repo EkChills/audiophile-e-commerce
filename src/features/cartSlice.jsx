@@ -1,36 +1,38 @@
 import React from 'react'
 import { createSlice } from '@reduxjs/toolkit'
-import { getItemFromLocalStorage } from '../utils/localStorage'
+import { getItemFromLocalStorage, getTotalFromLocalStorage } from '../utils/localStorage'
 
 const inputValues = {
-  name:'',
-  emailAddress:'',
+  name: '',
+  emailAddress: '',
   phoneNumber: '',
-  yourAddress:'',
-  zipCode:'',
-  city:'',
-  country:'',
-  paymentMethod:'e-money',
-  eMoneyNo:'',
-  eMoneyPin:''
+  yourAddress: '',
+  zipCode: '',
+  city: '',
+  country: '',
+  paymentMethod: 'e-money',
+  eMoneyNo: '',
+  eMoneyPin: ''
 }
 
 const initialState = {
   cartItems: getItemFromLocalStorage(),
-  cartModalOpen:false,
+  cartModalOpen: false,
   inputValues,
+  checkoutModalOpen: false,
+  cartTotal:getTotalFromLocalStorage()
 }
 
 const cartSlice = createSlice({
-  name:'cartSlice',
+  name: 'cartSlice',
   initialState,
   reducers: {
-    addToCart:(state, {payload}) => {
-      const {name,amount} = payload
+    addToCart: (state, { payload }) => {
+      const { name, amount } = payload
       const foundItem = state.cartItems.find((item) => item.name === payload.name)
-      if(foundItem) {
+      if (foundItem) {
 
-        if(foundItem.amount >= 20) {
+        if (foundItem.amount >= 20) {
           return
         }
         foundItem.amount += amount
@@ -38,41 +40,69 @@ const cartSlice = createSlice({
       }
       state.cartItems = [...state.cartItems, payload]
     },
-    openCartModal:(state) => {
+    openCartModal: (state) => {
       state.cartModalOpen = true
     },
-    closeCartModal:(state, {payload}) => {
-      if(payload === 'cart-backdrop') {
+    closeCartModal: (state, { payload }) => {
+      if (payload === 'cart-backdrop') {
         state.cartModalOpen = false
       }
       return
     },
-    increaseCartItemAmount:(state,{payload}) => {
-      const {name,amount} = payload
+    increaseCartItemAmount: (state, { payload }) => {
+      const { name, amount } = payload
       const foundItem = state.cartItems.find((item) => item.name === payload.name)
-      if(foundItem.amount >= 20) {
+      if (foundItem.amount >= 20) {
         return
       }
       foundItem.amount += 1
     },
-    reduceCartItemAmount:(state,{payload}) => {
-      const {name,amount} = payload
+    reduceCartItemAmount: (state, { payload }) => {
+      const { name, amount } = payload
       const foundItem = state.cartItems.find((item) => item.name === payload.name)
-      if(foundItem.amount <= 0) {
+      if (foundItem.amount <= 0) {
         state.cartItems = state.cartItems.filter((item) => item.name !== foundItem.name)
         return
       }
       foundItem.amount -= 1
     },
-    clearCart:(state) => {
+    clearCart: (state) => {
       state.cartItems = []
     },
-    handleChange:(state, {payload}) => {
-      const {name, value} = payload
+    handleChange: (state, { payload }) => {
+      const { name, value } = payload
       state.inputValues[name] = value
+    },
+    openCheckoutModal: (state) => {
+      state.checkoutModalOpen = true
+    },
+    closeCheckoutModal: (state, { payload }) => {
+      if (payload === 'checkout-modal-backdrop') {
+        state.checkoutModalOpen = false
+        return
+      }
+      return
+    },
+    calculateTotals:(state) => {
+      const cartTotals = state.cartItems.reduce((totals, item) => {
+        let totalAmount = item.amount * item.price
+        return totals + totalAmount
+      }, 0)
+      state.cartTotal = cartTotals
     }
   }
 })
 
-export const {addToCart, openCartModal, closeCartModal, increaseCartItemAmount, reduceCartItemAmount, clearCart, handleChange} = cartSlice.actions
+export const {
+  addToCart,
+  openCartModal,
+  closeCartModal,
+  increaseCartItemAmount,
+  reduceCartItemAmount,
+  openCheckoutModal,
+  closeCheckoutModal,
+  clearCart,
+  handleChange,
+  calculateTotals,
+} = cartSlice.actions
 export default cartSlice.reducer

@@ -4,7 +4,7 @@ import { addItemToLocalStorage } from "../utils/localStorage"
 import CounterButton from "./CounterButton"
 import OrangeButton from "./buttons/OrangeButton"
 import EmptyCart from "./EmptyCart"
-import { increaseCartItemAmount, reduceCartItemAmount, clearCart, closeCartModal } from "../features/cartSlice"
+import { increaseCartItemAmount, reduceCartItemAmount, clearCart, closeCartModal, openCheckoutModal } from "../features/cartSlice"
 import { Link } from "react-router-dom"
 
 
@@ -61,7 +61,7 @@ const Summary = () => {
         <span className="text-darkGray uppercase text-[15px]">grand total</span>
         <span className="text-[18px] font-bold uppercase">${cartTotals + 50}</span>
       </div>
-      <Link to="/checkout"><button className={`text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange font-bold hover:bg-lightOrange w-[100%] transition-colors duration-300`} onClick={() => dispatch(closeCartModal('cart-backdrop'))}>checkout</button></Link>
+      <Link to="/checkout"><button className={`text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange font-bold hover:bg-lightOrange w-[100%] transition-colors duration-300`} onClick={() => dispatch(openCheckoutModal())}>continue and pay</button></Link>
 
     </div>
   )

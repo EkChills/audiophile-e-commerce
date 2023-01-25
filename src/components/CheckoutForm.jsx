@@ -4,6 +4,8 @@ import { handleChange } from '../features/cartSlice'
 import FormRow from './FormRow'
 import { Link } from 'react-router-dom'
 import FormRowRadio from './FormRowRadio'
+import { createPortal } from 'react-dom'
+import CheckoutModal from './CheckoutModal'
 
 const CheckoutForm = () => {
   const { inputValues } = useSelector((store) => store.cart)

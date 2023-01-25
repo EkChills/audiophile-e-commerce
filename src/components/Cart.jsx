@@ -1,15 +1,13 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
-import { addItemToLocalStorage } from "../utils/localStorage"
-import CounterButton from "./CounterButton"
-import OrangeButton from "./buttons/OrangeButton"
+import { addItemToLocalStorage, addTotalToLocalStorage } from "../utils/localStorage"
 import EmptyCart from "./EmptyCart"
-import { increaseCartItemAmount, reduceCartItemAmount, clearCart, closeCartModal } from "../features/cartSlice"
+import { increaseCartItemAmount, reduceCartItemAmount, clearCart, closeCartModal, calculateTotals } from "../features/cartSlice"
 import { Link } from "react-router-dom"
 
 
 const Cart = () => {
-  const { cartItems } = useSelector((store) => store.cart)
+  const { cartItems,cartTotal } = useSelector((store) => store.cart)
   const dispatch = useDispatch()
 
   useEffect(() => {

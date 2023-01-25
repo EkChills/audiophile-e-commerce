@@ -2,6 +2,8 @@ import React from 'react'
 import CheckoutForm from '../components/CheckoutForm'
 import Summary from '../components/Summary'
 import { Link } from 'react-router-dom'
+import { createPortal } from 'react-dom'
+import CheckoutModal from '../components/CheckoutModal'
 
 const Checkout = () => {
   return (
@@ -10,6 +12,7 @@ const Checkout = () => {
         <CheckoutForm />
       </div>
       <Summary />
+      {createPortal(<CheckoutModal />, document.getElementById('root'))}
     </main>
   )
 }
