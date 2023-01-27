@@ -26,7 +26,7 @@ const SpeakersList = () => {
                   <img src={desktop} className="w-full hidden max-w-[30rem] lg:block rounded-lg" alt={name} />
                 </div>
 
-                <div className="flex flex-col space-y-[2rem] items-center lg:items-start">
+                <div className="flex flex-col space-y-[2rem] items-center justify-center lg:items-start">
                   {speaker.new && <h5 className="uppercase tracking-[.4rem] text-orange text-[14px]">new product</h5>}
                   <h3 className="text-[28px] font-bold md:text-[40px] text-center lg:text-left">{name}</h3>
                   <p className="text-[15px] text-darkGray text-center lg:text-left">{description}</p>
