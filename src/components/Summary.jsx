@@ -4,12 +4,22 @@ import { addItemToLocalStorage } from "../utils/localStorage"
 import CounterButton from "./CounterButton"
 import OrangeButton from "./buttons/OrangeButton"
 import EmptyCart from "./EmptyCart"
-import { increaseCartItemAmount, reduceCartItemAmount, clearCart, closeCartModal, openCheckoutModal } from "../features/cartSlice"
+import { increaseCartItemAmount, reduceCartItemAmount, clearCart, closeCartModal, openCheckoutModal, activateError } from "../features/cartSlice"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 
 const Summary = () => {
-  const { cartItems } = useSelector((store) => store.cart)
+  const { cartItems, inputValues:{name,
+  emailAddress,
+  phoneNumber,
+  yourAddress,
+  zipCode,
+  city,
+  country,
+  paymentMethod,
+  eMoneyNo,
+  eMoneyPin} } = useSelector((store) => store.cart)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -20,6 +30,20 @@ const Summary = () => {
     let totalAmount = item.amount * item.price
     return totals + totalAmount
   }, 0)
+
+  const onSubmitHandler = () => {
+    if(name  === '' || phoneNumber === '' || yourAddress === '' || zipCode === '' || city === '' || country === '' ) {
+     
+      dispatch(activateError())
+      return
+    }
+    else if(paymentMethod === 'e-money' && (eMoneyNo === '' || eMoneyPin === '')) {
+      dispatch(activateError())
+      return
+    }
+    console.log(name,emailAddress);
+    dispatch(openCheckoutModal())
+  }
 
 
 
@@ -61,7 +85,7 @@ const Summary = () => {
         <span className="text-darkGray uppercase text-[15px]">grand total</span>
         <span className="text-[18px] font-bold uppercase">${cartTotals + 50}</span>
       </div>
-      <Link to="/checkout"><button className={`text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange font-bold hover:bg-lightOrange w-[100%] transition-colors duration-300`} onClick={() => dispatch(openCheckoutModal())}>continue and pay</button></Link>
+      <button className={`text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange font-bold hover:bg-lightOrange w-[100%] transition-colors duration-300`} onClick={onSubmitHandler}>continue and pay</button>
 
     </div>
   )

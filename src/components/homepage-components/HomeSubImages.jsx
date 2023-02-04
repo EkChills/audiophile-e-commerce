@@ -13,7 +13,7 @@ const HomeSubImages = () => {
         return (
           <Link key={item.id} onClick={() => dispatch(closeNavModal('nav-backdrop'))} to={item.to} className="w-full">
           <div className="flex flex-col w-full items-center bg-[#F1F1F1] justify-center rounded-lg space-y-3 pt-14 pb-4 relative">
-            <img className='w-[80px] absolute -top-6' src={`${item.path}`} alt={item.desc} />
+            <img className='w-[8rem] absolute -top-11' src={`${item.path}`} alt={item.desc} />
             <h5 className='uppercase text-[15px] font-semibold'>{item.desc}</h5>
             <div className="flex items-center space-x-2 cursor-pointer">
               <p className='uppercase text-[13px] text-veryDarkGray font-semibold'>shop</p>

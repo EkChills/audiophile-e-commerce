@@ -18,7 +18,7 @@ import CounterButton from '../components/CounterButton';
 const SingleEarphone = () => {
   const { slug } = useParams();
   const { earphones, itemAmount } = useSelector((store) => store.allProducts)
-  const { cartItems, cartModalOpen } = useSelector((store) => store.cart)
+  const {  cartModalOpen } = useSelector((store) => store.cart)
   const singleEarphone = earphones.find((earphone) => earphone.slug === slug)
   const dispatch = useDispatch()
   const { image: { mobile, tablet, desktop }, name, description, price, features, includes, gallery: { first, second, third }, others, cartImage: { cartImg } } = singleEarphone

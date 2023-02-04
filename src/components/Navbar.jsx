@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import links from '../utils/links'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import AddToCartModal from './AddToCartModal'
 import { useDispatch, useSelector } from 'react-redux'
@@ -39,7 +39,9 @@ const Navbar = () => {
         <ul className='hidden text-[13px] font-semibold lg:flex items-center space-x-6 capitalize text-pureWhite'>
           {links.map((link, index) => {
             const { id, title } = link
-            return <Link key={id} to={link.to} className='cursor-pointer hover:text-orange transition-all duration-500'>{title}</Link>
+            return <NavLink style={({isActive}) => ({
+              color:isActive ? '#D87D4A' : 'white'
+            })} key={id} to={link.to} className='cursor-pointer hover:text-orange transition-all duration-500'>{title}</NavLink>
           })}
         </ul>
 

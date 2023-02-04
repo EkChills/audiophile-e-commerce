@@ -20,7 +20,8 @@ const initialState = {
   cartModalOpen: false,
   inputValues,
   checkoutModalOpen: false,
-  cartTotal:getTotalFromLocalStorage()
+  cartTotal:getTotalFromLocalStorage(),
+  inputError:false,
 }
 
 const cartSlice = createSlice({
@@ -67,7 +68,7 @@ const cartSlice = createSlice({
       foundItem.amount -= 1
     },
     clearCart: (state) => {
-      state.cartItems = []
+      return {...initialState, cartItems:[]}
     },
     handleChange: (state, { payload }) => {
       const { name, value } = payload
@@ -89,6 +90,12 @@ const cartSlice = createSlice({
         return totals + totalAmount
       }, 0)
       state.cartTotal = cartTotals
+    },
+    activateError:(state) => {
+      state.inputError = true
+    },
+    deactivateError:state => {
+      state.inputError = false
     }
   }
 })
@@ -104,5 +111,7 @@ export const {
   clearCart,
   handleChange,
   calculateTotals,
+  activateError,
+  deactivateError
 } = cartSlice.actions
 export default cartSlice.reducer

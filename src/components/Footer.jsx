@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import links from '../utils/links'
 import facebook from '../assets/shared/desktop/icon-facebook.svg'
 import instagram from '../assets/shared/desktop/icon-instagram.svg'
@@ -16,7 +16,9 @@ const Footer = () => {
         <div className='flex flex-col space-y-4 md:flex-row md:space-y-0 md:items-center md:space-x-8'>
           {
             links.map((link) => {
-              return <Link to={link.to} key={link.id} className="uppercase text-center text-[13px] font-bold text-pureWhite hover:text-orange transition-all duration-300">{link.title}</Link>
+              return <NavLink to={link.to} style={({isActive}) => ({
+                color: isActive ? '#D87D4A' : 'white'
+              })} key={link.id} className="uppercase text-center text-[13px] font-bold text-pureWhite hover:text-orange transition-all duration-300">{link.title}</NavLink>
             })
           }
         </div>

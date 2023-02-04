@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const FormRow = ({ text, labelText, type, value, name, placeholder, onChange, id }) => {
+  const {inputError} = useSelector((store) => store.cart)
   return (
     <div className="form-control w-full max-w-xs">
       <label className="label" htmlFor={id}>
@@ -11,7 +13,7 @@ const FormRow = ({ text, labelText, type, value, name, placeholder, onChange, id
         type={type}
         value={value}
         placeholder={placeholder}
-        className="input text-darkGray input-bordered w-full max-w-xs"
+        className={`input ${inputError ? 'border-error' : null} text-darkGray input-bordered focus:border-orange w-full max-w-xs`}
         onChange={onChange}
         id={id}
       />
