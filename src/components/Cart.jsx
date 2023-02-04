@@ -19,6 +19,11 @@ const Cart = () => {
     return totals + totalAmount
   }, 0)
 
+  const amountOfCartItems = cartItems.reduce((total, item) => {
+    let amountTotal = item.amount
+    return total + amountTotal
+  },0)
+
 
 
   if(cartItems.length <= 0) {
@@ -31,7 +36,7 @@ const Cart = () => {
     <div className="flex flex-col z-[55] space-y-[1.7rem] w-[90vw] md:w-[30rem]  bg-pureWhite p-7 rounded-lg max-h-[30rem] overflow-y-scroll" id="cart-overlay">
 
       <div className="flex justify-between items-center" >
-        <span className="text-[18px] font-bold uppercase">cart ({cartItems.length})</span>
+        <span className="text-[18px] font-bold uppercase">cart ({amountOfCartItems})</span>
         <span className="text-darkGray capitalize text-[15px] underline cursor-pointer hover:bg-orange transition-all duration-300" onClick={() => dispatch(clearCart())}>remove all</span>
       </div>
       {cartItems.map((item, index) => {
