@@ -61,7 +61,7 @@ const cartSlice = createSlice({
     reduceCartItemAmount: (state, { payload }) => {
       const { name, amount } = payload
       const foundItem = state.cartItems.find((item) => item.name === payload.name)
-      if (foundItem.amount <= 0) {
+      if (foundItem.amount <= 1) {
         state.cartItems = state.cartItems.filter((item) => item.name !== foundItem.name)
         return
       }

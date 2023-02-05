@@ -6,8 +6,8 @@ const DescImageGrid = ({ first, second, third, name }) => {
     Aos.init({duration:2000})
   },[])
   return (
-    <div className='flex   flex-col justify-center md:items-between   md:flex-row gap-5'>
-      <div className='flex flex-col gap-5 md:w-[40%]   justify-between '>
+    <div className='flex  flex-col justify-center md:items-between  md:flex-row gap-5'>
+      <div className='flex flex-col gap-5 md:w-[40%]  '>
         <div data-aos="flip-up">
           <img src={first.mobile} className="w-full md:hidden rounded-lg" alt={name} />
           <img src={first.tablet} className="w-full hidden md:block lg:hidden rounded-lg" alt={name} />
@@ -20,10 +20,10 @@ const DescImageGrid = ({ first, second, third, name }) => {
           <img src={second.desktop} className="w-full hidden lg:block rounded-lg" alt={name} />
         </div>
       </div>
-      <div className='md:w-[60%]' data-aos="flip-right">
-        <img src={third.mobile} className="w-full md:hidden rounded-lg"  alt={name} />
-        <img src={third.desktop} className="w-full hidden md:block lg:hidden rounded-lg" alt={name} />
-        <img src={third.desktop} alt={name} className="w-full hidden lg:block rounded-lg" />
+      <div className='md:w-[56%] ' data-aos="flip-right">
+        <img src={third.mobile} className="w-full object-cover md:hidden rounded-lg"  alt={name} />
+        <img src={third.desktop} className="w-full object-cover hidden md:block lg:hidden rounded-lg" alt={name} />
+        <img src={third.desktop} alt={name} className="w-full object-cover hidden lg:block rounded-lg" />
       </div>
     </div>
   )
