@@ -22,6 +22,7 @@ const initialState = {
   checkoutModalOpen: false,
   cartTotal:getTotalFromLocalStorage(),
   inputError:false,
+  showLogout:false,
 }
 
 const cartSlice = createSlice({
@@ -96,6 +97,9 @@ const cartSlice = createSlice({
     },
     deactivateError:state => {
       state.inputError = false
+    },
+    toggleLogout:(state) => {
+      state.showLogout = !state.showLogout
     }
   }
 })
@@ -112,6 +116,7 @@ export const {
   handleChange,
   calculateTotals,
   activateError,
-  deactivateError
+  deactivateError,
+  toggleLogout
 } = cartSlice.actions
 export default cartSlice.reducer

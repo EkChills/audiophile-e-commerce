@@ -10,11 +10,12 @@ import { openCartModal } from '../features/cartSlice'
 import NavModal from './NavModal'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
+import { toggleLogout } from '../features/cartSlice'
 
 
 const Navbar = () => {
-  const { cartModalOpen } = useSelector((store) => store.cart)
-  const {myUser} = useSelector((store) => store.user)
+  const { cartModalOpen, showLogout } = useSelector((store) => store.cart)
+  const { myUser } = useSelector((store) => store.user)
   const dispatch = useDispatch()
   const { loginWithRedirect, user, logout } = useAuth0();
 
@@ -63,14 +64,21 @@ const Navbar = () => {
           {!myUser ? <button className='cursor-pointer font-bold text-pureWhite hover:text-orange transition-all duration-500' onClick={() => loginWithRedirect()}>
             login
           </button>
-          :
-          <button className='cursor-pointer font-bold text-pureWhite hover:text-orange transition-all duration-500' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-            Log Out
-          </button>}
+            :
+            <button className='hidden md:block cursor-pointer font-bold text-pureWhite hover:text-orange transition-all duration-500' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+              Log Out
+            </button>}
 
-          {myUser && <img src={myUser.picture} className="w-10 rounded-full  border-[3px] border-pureWhite" alt="" />}
+          {myUser && <div className='relative'>
+            <img onClick={() => dispatch(toggleLogout())} src={myUser.picture} className="w-10 rounded-full  border-[3px] border-pureWhite" alt="" />
+            {showLogout && <div className='bg-pureWhite md:hidden p-4 absolute rounded-lg top-[4rem] -left-[5rem] -right-[1rem]'>
+              <button className='cursor-pointer font-bold text-pureBlack hover:text-orange transition-all duration-500' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                Log Out
+              </button>
+            </div>}
+          </div>}
 
-          
+
         </div>
 
 
