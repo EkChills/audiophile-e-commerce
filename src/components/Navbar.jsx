@@ -68,6 +68,8 @@ const Navbar = () => {
             Log Out
           </button>}
 
+          {myUser && <img src={myUser.picture} className="w-10 rounded-full  border-[3px] border-pureWhite" alt="" />}
+
           
         </div>
 

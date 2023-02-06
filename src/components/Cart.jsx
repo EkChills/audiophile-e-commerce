@@ -1,14 +1,17 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react"
-import { addItemToLocalStorage, addTotalToLocalStorage } from "../utils/localStorage"
+import { addItemToLocalStorage } from "../utils/localStorage"
 import EmptyCart from "./EmptyCart"
 import { increaseCartItemAmount, reduceCartItemAmount, clearCart, closeCartModal, calculateTotals } from "../features/cartSlice"
 import { Link } from "react-router-dom"
+import { useAuth0 } from "@auth0/auth0-react"
 
 
 const Cart = () => {
-  const { cartItems,cartTotal } = useSelector((store) => store.cart)
+  const { cartItems} = useSelector((store) => store.cart)
+  const {myUser} = useSelector((store) => store.user)
   const dispatch = useDispatch()
+  const {loginWithRedirect} = useAuth0()
 
   useEffect(() => {
     addItemToLocalStorage(cartItems)
@@ -62,7 +65,10 @@ const Cart = () => {
         <span className="text-darkGray uppercase text-[15px]">Total</span>
         <span className="text-[18px] font-bold uppercase">$ {cartTotals}</span>
       </div>
-      <Link to="/checkout"><button className={`text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange font-bold hover:bg-lightOrange w-[100%] transition-colors duration-300`} onClick={() => dispatch(closeCartModal('cart-backdrop'))}>checkout</button></Link>
+      { myUser ? <Link to="/checkout"><button className={`text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange font-bold hover:bg-lightOrange w-[100%] transition-colors duration-300`} onClick={() => dispatch(closeCartModal('cart-backdrop'))}>checkout</button></Link>
+        :
+        <button onClick={() => loginWithRedirect()} className="text-pureWhite text-[13px] uppercase px-4 py-3 bg-orange font-bold hover:bg-lightOrange w-[100%] transition-colors duration-300">log in</button>
+      }
       
     </div>
   )
