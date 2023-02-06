@@ -12,9 +12,11 @@ import Speakers from './pages/Speakers'
 import SingleSpeaker from './pages/SingleSpeaker'
 import Checkout from './pages/Checkout'
 import ProtectedRoute from './pages/ProtectedRoute'
+import AuthWrapper from './pages/AuthWrapper'
 const App = () => {
   return (
 
+    <AuthWrapper>
     <BrowserRouter>
       <ScrollToTop />
       <Navbar />
@@ -32,7 +34,7 @@ const App = () => {
       </Routes>
       <Footer />
     </BrowserRouter>
-
+    </AuthWrapper>
   )
 }
 
